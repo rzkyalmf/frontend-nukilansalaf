@@ -1,16 +1,20 @@
 import "@/styles/globals.css";
 
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Philosopher } from "next/font/google";
 
-const inter = Inter({
+const inter = Inter({ subsets: ["latin"] });
+const philosopher = Philosopher({
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
   subsets: ["latin"],
-  variable: "--font-inter",
+  display: "swap",
+  variable: "--font-philosopher",
 });
 
 export const metadata: Metadata = {
-  title: "Rizky Alam Firmansyah",
-  description: "Software Engineer",
+  title: "Nukilan Salaf",
+  description: "Menukil kalam Ulama, Qur'an & Hadist",
 };
 
 export default function RootLayout({
@@ -19,8 +23,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.variable} antialiased`}>{children}</body>
+    <html lang="en" className={philosopher.variable}>
+      <body className={`${inter.className} font-sans`}>{children}</body>
     </html>
   );
 }
