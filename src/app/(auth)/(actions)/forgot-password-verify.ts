@@ -5,9 +5,7 @@ import { redirect } from "next/navigation";
 import { SingleResponse } from "@/types/api/responses";
 import { TokenData } from "@/types/models/auth";
 
-export async function verifyForgotPasswordAction(
-  _state: { status: string; message: string },
-  formData: FormData) {
+export async function verifyForgotPasswordAction(_state: unknown, formData: FormData) {
   const token = formData.get("token") as string;
   const code = formData.get("code") as string;
 
