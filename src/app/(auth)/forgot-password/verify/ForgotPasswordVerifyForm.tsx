@@ -10,11 +10,6 @@ import { Input } from "@/components/ui/input";
 
 import { verifyForgotPasswordAction } from "../../(actions)/forgot-password-verify";
 
-// const initialState = {
-//   message: "",
-//   status: "",
-// };
-
 export const ForgotPasswordVerify = () => {
   const searchParams = useSearchParams();
   const token = searchParams.get("token");
