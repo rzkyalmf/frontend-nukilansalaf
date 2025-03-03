@@ -9,7 +9,8 @@ export async function verifyForgotPasswordAction(_state: unknown, formData: Form
   const token = formData.get("token") as string;
   const code = formData.get("code") as string;
 
-  const res = await fetch(`${process.env.API_URL}/verify-forgot-password`, {
+  try {
+    const res = await fetch(`${process.env.API_URL}/verify-forgot-password`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -30,5 +31,15 @@ export async function verifyForgotPasswordAction(_state: unknown, formData: Form
 
   await new Promise(resolve => setTimeout(resolve, 3000));
 
-  redirect (`/forgot-password/verify/reset?token=${token}`);
+  redirect(`/forgot-password/verify/reset?token=${token}`);
+    
+  } catch (error) {
+   console.error("Forgot Password Verify error:", error);
+    
+    return {
+      status: "error",
+      message: "Gagal terhubung ke server. Silakan coba lagi nanti.",
+    };
+  }
+  
 }

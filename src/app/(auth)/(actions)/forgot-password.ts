@@ -8,7 +8,8 @@ import { TokenData } from "@/types/models/auth";
 export async function forgotPasswordAction(_state: unknown, formData: FormData) {
   const email = formData.get("email") as string;
 
-  const res = await fetch(`${process.env.API_URL}/forgot-password`, {
+  try {
+    const res = await fetch(`${process.env.API_URL}/forgot-password`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -32,5 +33,16 @@ export async function forgotPasswordAction(_state: unknown, formData: FormData) 
 
   await new Promise(resolve => setTimeout(resolve, 3000));
 
-  redirect (`/forgot-password/verify?token=${token}`);
+  redirect(`/forgot-password/verify?token=${token}`);
+    
+  } catch (error) {
+   console.error("forgot password error:", error);
+    
+    return {
+      status: "error",
+      message: "Gagal terhubung ke server. Silakan coba lagi nanti.",
+      email: email
+    };
+  }
+  
 }

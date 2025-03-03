@@ -22,7 +22,8 @@ export async function registerAction(_state: unknown, formData: FormData) {
     };
   }
 
-  const res = await fetch(`${process.env.API_URL}/register`, {
+  try {
+    const res = await fetch(`${process.env.API_URL}/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -49,4 +50,16 @@ export async function registerAction(_state: unknown, formData: FormData) {
   await new Promise(resolve => setTimeout(resolve, 3000));
 
   redirect (`/register/verify?token=${token}`);
+ } catch (error) {
+   console.error("Register error:", error);
+    
+    return {
+      status: "error",
+      message: "Gagal terhubung ke server. Silakan coba lagi nanti.",
+      name: name,
+      email: email,
+      username: username,
+    };
+  }
+  
 }

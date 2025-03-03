@@ -16,7 +16,8 @@ export async function resetPasswordAction(_state: unknown, formData: FormData) {
     };
   }
 
-  const res = await fetch(`${process.env.API_URL}/reset-password`, {
+  try {
+    const res = await fetch(`${process.env.API_URL}/reset-password`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -37,5 +38,15 @@ export async function resetPasswordAction(_state: unknown, formData: FormData) {
     
   await new Promise(resolve => setTimeout(resolve, 3000));
 
-  redirect ("/login");
+  redirect("/login");
+    
+  } catch (error) {
+   console.error("Forgot Password Reset error:", error);
+    
+    return {
+      status: "error",
+      message: "Gagal terhubung ke server. Silakan coba lagi nanti.",
+    };
+  }
+  
 }

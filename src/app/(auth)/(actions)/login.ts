@@ -10,7 +10,8 @@ export async function loginAction(_state: unknown, formData: FormData) {
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
 
-  const res = await fetch(`${process.env.API_URL}/login`, {
+  try {
+    const res = await fetch(`${process.env.API_URL}/login`, {
     method: "POST",
     credentials: "include",
     headers: {
@@ -37,10 +38,21 @@ export async function loginAction(_state: unknown, formData: FormData) {
     // secure: true,
     sameSite: "lax",
     path: "/",
-    maxAge: 5 * 24 * 60 * 60, // 5 hari dalam detik
+    maxAge: 5 * 24 * 60 * 60,
   });
     
   await new Promise(resolve => setTimeout(resolve, 3000));
 
-  redirect ("/dashboard");
+  redirect("/dashboard");
+    
+  } catch (error) {
+   console.error("Login error:", error);
+    
+    return {
+      status: "error",
+      message: "Gagal terhubung ke server. Silakan coba lagi nanti.",
+      email: email
+    };
+  }
+  
 }

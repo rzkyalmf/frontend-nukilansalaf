@@ -8,7 +8,8 @@ export async function verifyRegisterAction(_state: unknown, formData: FormData) 
   const token = formData.get("token") as string;
   const code = formData.get("code") as string;
 
-  const res = await fetch(`${process.env.API_URL}/verify`, {
+  try {
+    const res = await fetch(`${process.env.API_URL}/verify`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -29,5 +30,14 @@ export async function verifyRegisterAction(_state: unknown, formData: FormData) 
 
   await new Promise(resolve => setTimeout(resolve, 3000));
 
-  redirect ("/login");
+  redirect("/login");
+    
+ } catch (error) {
+   console.error("Register Verify error:", error);
+    
+    return {
+      status: "error",
+      message: "Gagal terhubung ke server. Silakan coba lagi nanti.",
+    };
+  }
 }
