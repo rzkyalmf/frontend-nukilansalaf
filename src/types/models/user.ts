@@ -1,12 +1,11 @@
 export interface User {
-  id: string;
   name: string;
+  id: string;
   username: string;
   email: string;
-  password: string;
-  avatar?: string;
+  phone: string;
+  avatar: string;
   isVerified: boolean;
+  onBanned: boolean;
   role: string;
-  createdAt: Date;
-  updatedAt: Date;
 }

@@ -1,15 +1,11 @@
 import { Suspense } from "react";
 
-import { Loading } from "@/components/loading";
-
-import { ResetPassword } from "./ResetPasswordForm";
+import { ResetPassword } from "./component";
 
 export default function Page() {
   return (
-    <>
-      <Suspense fallback={<Loading />}>
-        <ResetPassword />
-      </Suspense>
-    </>
+    <Suspense fallback={<div>Loading...</div>}>
+      <ResetPassword />
+    </Suspense>
   );
 }

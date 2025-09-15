@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Base Element Styling */
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -61,26 +62,111 @@
   html {
     font-size: 14px;
   }
+
+  /* Typography */
   body {
     @apply font-medium tracking-tight;
   }
   h1 {
-    @apply text-8xl font-semibold tracking-tighter;
+    @apply gradient-ns font-philosopher text-4xl font-bold tracking-tight;
   }
   h2 {
-    @apply text-3xl font-medium tracking-tighter;
+    @apply gradient-ns font-philosopher text-3xl font-bold tracking-tight;
   }
   h3 {
-    @apply text-2xl font-medium tracking-tight;
+    @apply gradient-ns font-philosopher text-2xl font-bold tracking-tight;
   }
   h4 {
-    @apply text-xl font-medium tracking-tight;
+    @apply text-xl font-medium tracking-tight text-gray-600;
   }
   h5 {
-    @apply text-lg font-medium;
+    @apply text-lg font-medium tracking-tight text-gray-600;
   }
   h6 {
-    @apply text-balance font-medium;
+    @apply text-base font-medium tracking-tight text-gray-600;
+  }
+  p {
+    @apply font-light tracking-normal text-gray-500;
+  }
+  span {
+    @apply font-medium tracking-normal text-gray-500;
+  }
+  small {
+    @apply text-sm font-light tracking-normal text-gray-400;
+  }
+  b {
+    @apply font-medium tracking-normal;
+  }
+}
+
+/* Reusable Component Classes */
+@layer components {
+  /* Gradient Colors */
+  .gradient-primary {
+    @apply bg-gradient-to-br from-[#C2B59B] to-[#746C5B] bg-clip-text text-transparent;
+  }
+  .gradient-secondary {
+    @apply bg-gradient-to-br from-[#746C5B] to-[#595244] bg-clip-text text-transparent;
+  }
+  .gradient-warning {
+    @apply bg-gradient-to-br from-[#FACC15] to-[#F59E0B] bg-clip-text text-transparent;
+  }
+  .gradient-danger {
+    @apply bg-gradient-to-br from-[#F87171] to-[#EF4444] bg-clip-text text-transparent;
+  }
+
+  /* Text Colors */
+  .text-primary {
+    @apply text-[#C2B59B];
+  }
+  .text-secondary {
+    @apply text-[#746C5B];
+  }
+  .text-warning {
+    @apply text-yellow-500;
+  }
+  .text-danger {
+    @apply text-red-500;
+  }
+
+  /* Background Colors */
+  .bg-primary {
+    @apply bg-[#C2B59B];
+  }
+  .bg-secondary {
+    @apply bg-[#746C5B];
+  }
+  .bg-warning {
+    @apply bg-yellow-500;
+  }
+  .bg-danger {
+    @apply bg-red-500;
+  }
+
+  /* Hover Colors */
+  .hover-primary {
+    @apply hover:text-[#C2B59B];
+  }
+  .hover-secondary {
+    @apply hover:text-[#746C5B];
+  }
+  .hover-warning {
+    @apply hover:text-yellow-500;
+  }
+  .hover-danger {
+    @apply hover:text-red-500;
+  }
+
+  /* Typography */
+  .font-philosopher {
+    font-family: var(--font-philosopher), sans-serif;
+  }
+}
+
+/* Utility Classes */
+@layer utilities {
+  .input-icon {
+    @apply pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 transform text-gray-400;
   }
 }
 
@@ -88,7 +174,71 @@
   .gradient-ns {
     @apply bg-gradient-to-br from-[#C2B59B] to-[#746C5B] bg-clip-text text-transparent;
   }
-  .font-philosopher {
-    font-family: var(--font-philosopher), sans-serif;
+}
+
+/* Custom Animations */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) rotateY(0deg);
+    opacity: 1;
   }
+  25% {
+    transform: translateY(-10px) rotateY(5deg);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-5px) rotateY(0deg);
+    opacity: 0.9;
+  }
+  75% {
+    transform: translateY(-15px) rotateY(-5deg);
+    opacity: 0.7;
+  }
+}
+
+@keyframes randomHover {
+  0%,
+  100% {
+    transform: translateY(0px) scale(1);
+    box-shadow:
+      0 1px 3px 0 rgb(0 0 0 / 0.1),
+      0 1px 2px -1px rgb(0 0 0 / 0.1);
+  }
+  50% {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow:
+      0 10px 15px -3px rgb(0 0 0 / 0.1),
+      0 4px 6px -4px rgb(0 0 0 / 0.1);
+  }
+}
+
+.contributor-card-1 {
+  animation: randomHover 4s ease-in-out infinite;
+  animation-delay: 0s;
+}
+
+.contributor-card-2 {
+  animation: randomHover 5s ease-in-out infinite;
+  animation-delay: 0.8s;
+}
+
+.contributor-card-3 {
+  animation: randomHover 4.5s ease-in-out infinite;
+  animation-delay: 2.5s;
+}
+
+.contributor-card-4 {
+  animation: randomHover 5.5s ease-in-out infinite;
+  animation-delay: 1.5s;
+}
+
+.contributor-card-5 {
+  animation: randomHover 4.2s ease-in-out infinite;
+  animation-delay: 3.2s;
+}
+
+.contributor-card-6 {
+  animation: randomHover 4.8s ease-in-out infinite;
+  animation-delay: 0.5s;
 }

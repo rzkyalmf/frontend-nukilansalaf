@@ -1,13 +1,11 @@
 import { Suspense } from "react";
 
-import { Loading } from "@/components/loading";
-
-import { RegisterVerify } from "./RegisterVerifyForm";
+import { RegisterVerify } from "./component";
 
 export default function Page() {
   return (
     <>
-      <Suspense fallback={<Loading />}>
+      <Suspense fallback={<div>Loading...</div>}>
         <RegisterVerify />
       </Suspense>
     </>

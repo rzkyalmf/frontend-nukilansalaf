@@ -1,0 +1,81 @@
+import { Menu as MenuIcon, Search } from "lucide-react";
+import Image from "next/image";
+import { redirect } from "next/navigation";
+import React from "react";
+
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import serverAuth from "@/lib/server-auth";
+
+import { SideBar } from "./(components)/sidebar";
+
+export default async function Layout({ children }: React.PropsWithChildren) {
+  const authorization = await serverAuth();
+
+  console.log(authorization);
+
+  if (!authorization) {
+    redirect("/login");
+  }
+
+  const platformMenuItems = [
+    { label: "Dashboard", href: "/dashboard", iconName: "House" },
+    { label: "Buat Artikel", href: "/create-article", iconName: "Newspaper" },
+    { label: "Profile", href: "/profile", iconName: "CircleUserRound" },
+  ];
+
+  const SidebarContent = () => (
+    <>
+      <div className="flex flex-col gap-6">
+        <SideBar items={platformMenuItems} title="Platform Menu" />
+      </div>
+      <section className="mb-12 mt-4 md:mt-auto">
+        <Button className="w-full"> Logout </Button>
+      </section>
+    </>
+  );
+
+  return (
+    <div className="flex h-screen flex-col">
+      <header className="flex items-center justify-between border-b border-slate-200 bg-white p-4 sm:p-6">
+        <div className="mx-8 flex items-center space-x-2">
+          <Image src="/images/logo3.png" alt="logo" className="w-10 sm:w-12" priority width={150} height={150} />
+        </div>
+        <div className="hidden flex-grow justify-center sm:flex">
+          <div className="relative w-64 md:w-80 lg:w-96">
+            <Input type="text" placeholder="Cari di sini" className="w-full py-2 pl-10 pr-4" />
+            <Search className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 transform text-slate-400" size={20} />
+          </div>
+        </div>
+        <div className="mx-8 flex items-center space-x-4">
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" className="md:hidden">
+                <MenuIcon className="h-6 w-6" />
+                <span className="sr-only">Toggle Menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="left" className="w-[80vw] sm:w-[385px]">
+              <SidebarContent />
+            </SheetContent>
+          </Sheet>
+          <button className="rounded-full bg-slate-100 p-2 hover:bg-slate-200">
+            <Avatar>
+              <AvatarImage src="" />
+              <AvatarFallback>NS</AvatarFallback>
+            </Avatar>
+          </button>
+        </div>
+      </header>
+
+      <div className="flex flex-1 overflow-hidden">
+        <aside className="hidden w-[260px] flex-col justify-between border-r border-slate-200 bg-white p-4 text-slate-950 md:flex">
+          <SidebarContent />
+        </aside>
+        <main className="flex-1 overflow-y-auto p-4 sm:p-6">{children}</main>
+      </div>
+    </div>
+  );
+}

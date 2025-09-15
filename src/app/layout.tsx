@@ -3,6 +3,8 @@ import "@/styles/globals.css";
 import type { Metadata } from "next";
 import { Inter, Philosopher } from "next/font/google";
 
+import { TooltipProvider } from "@/components/ui/tooltip";
+
 const inter = Inter({ subsets: ["latin"] });
 const philosopher = Philosopher({
   weight: ["400", "700"],
@@ -24,7 +26,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={philosopher.variable}>
-      <body className={`${inter.className} font-sans`}>{children}</body>
+      <body className={`${inter.className} font-sans`}>
+        <TooltipProvider>{children} </TooltipProvider>
+      </body>
     </html>
   );
 }

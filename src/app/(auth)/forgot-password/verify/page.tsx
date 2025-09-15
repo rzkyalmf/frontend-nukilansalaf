@@ -1,15 +1,11 @@
 import { Suspense } from "react";
 
-import { Loading } from "@/components/loading";
-
-import { ForgotPasswordVerify } from "./ForgotPasswordVerifyForm";
+import { ForgotPasswordVerify } from "./component";
 
 export default function Page() {
   return (
-    <>
-      <Suspense fallback={<Loading />}>
-        <ForgotPasswordVerify />
-      </Suspense>
-    </>
+    <Suspense fallback={<div>Loading...</div>}>
+      <ForgotPasswordVerify />
+    </Suspense>
   );
 }
