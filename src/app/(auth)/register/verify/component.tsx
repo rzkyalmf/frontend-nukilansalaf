@@ -45,14 +45,14 @@ export const RegisterVerify = () => {
           {pending ? "Sedang memverifikasi..." : "Verifikasi"}
         </Button>
 
-        {state.status === "error" && <p className="text-danger">{state.message}</p>}
+        {state.status === "error" && <p className="nuksaf-text-danger">{state.message}</p>}
       </form>
 
       <section>
         <p>
           Belum menerima kode ?{" "}
           <Link href="#">
-            <span className="hover-primary">Kirim Ulang</span>
+            <span className="nuksaf-hover-primary">Kirim Ulang</span>
           </Link>
         </p>
       </section>

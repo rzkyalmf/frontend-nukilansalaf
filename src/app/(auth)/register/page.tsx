@@ -27,7 +27,7 @@ export default function Page() {
         </div>
         <div>
           <Link href="/">
-            <span className="hover-primary">
+            <span className="nuksaf-hover-primary">
               <CircleX size={22} strokeWidth={1.4} />
             </span>
           </Link>
@@ -64,7 +64,7 @@ export default function Page() {
           {pending ? "Sedang mendaftarkan..." : "Daftar Sekarang"}
         </Button>
 
-        {state.status === "error" && <p className="text-danger">{state.message}</p>}
+        {state.status === "error" && <p className="nuksaf-text-danger">{state.message}</p>}
       </form>
 
       <div className="relative">
@@ -80,7 +80,7 @@ export default function Page() {
         <p>
           Sudah punya akun ?{" "}
           <Link href="/login">
-            <span className="hover-primary">Login</span>
+            <span className="nuksaf-hover-primary">Login</span>
           </Link>
         </p>
       </section>

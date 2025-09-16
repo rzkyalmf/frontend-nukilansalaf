@@ -33,12 +33,12 @@ export default function Page() {
           {pending ? "Sedang proses..." : "Reset Password"}
         </Button>
 
-        {state.status === "error" && <p className="text-danger">{state.message}</p>}
+        {state.status === "error" && <p className="nuksaf-text-danger">{state.message}</p>}
       </form>
 
       <div className="flex">
         <Link href="/login">
-          <p className="hover-primary inline-flex items-center">
+          <p className="nuksaf-hover-primary inline-flex items-center">
             <ArrowLeft size={16} className="mr-2" />
             Kembali ke Login
           </p>

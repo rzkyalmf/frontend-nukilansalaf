@@ -25,7 +25,7 @@ export default function Page() {
         </div>
         <div>
           <Link href="/">
-            <span className="hover-primary">
+            <span className="nuksaf-hover-primary">
               <CircleX size={22} strokeWidth={1.4} />
             </span>
           </Link>
@@ -49,11 +49,11 @@ export default function Page() {
 
         <div>
           <Link href="/forgot-password">
-            <p className="hover-primary">Lupa Password ?</p>
+            <p className="nuksaf-hover-primary">Lupa Password ?</p>
           </Link>
         </div>
 
-        {state.status === "error" && <p className="text-danger">{state.message}</p>}
+        {state.status === "error" && <p className="nuksaf-text-danger">{state.message}</p>}
       </form>
 
       <div className="relative">
@@ -69,7 +69,7 @@ export default function Page() {
         <p>
           Belum punya akun ?{" "}
           <Link href="/register">
-            <span className="hover-primary">Daftar</span>
+            <span className="nuksaf-hover-primary">Daftar</span>
           </Link>
         </p>
       </section>

@@ -14,8 +14,6 @@ import { SideBar } from "./(components)/sidebar";
 export default async function Layout({ children }: React.PropsWithChildren) {
   const authorization = await serverAuth();
 
-  console.log(authorization);
-
   if (!authorization) {
     redirect("/login");
   }

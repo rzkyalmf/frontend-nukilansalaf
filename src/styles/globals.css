@@ -102,7 +102,7 @@
 /* Reusable Component Classes */
 @layer components {
   /* Gradient Colors */
-  .gradient-primary {
+  .nuksaf-gradient-primary {
     @apply bg-gradient-to-br from-[#C2B59B] to-[#746C5B] bg-clip-text text-transparent;
   }
   .gradient-secondary {
@@ -116,45 +116,45 @@
   }
 
   /* Text Colors */
-  .text-primary {
+  .nuksaf-text-primary {
     @apply text-[#C2B59B];
   }
-  .text-secondary {
+  .nuksaf-text-secondary {
     @apply text-[#746C5B];
   }
-  .text-warning {
+  .nuksaf-text-warning {
     @apply text-yellow-500;
   }
-  .text-danger {
+  .nuksaf-text-danger {
     @apply text-red-500;
   }
 
   /* Background Colors */
-  .bg-primary {
+  .nuksaf-bg-primary {
     @apply bg-[#C2B59B];
   }
-  .bg-secondary {
+  .nuksaf-bg-secondary {
     @apply bg-[#746C5B];
   }
-  .bg-warning {
+  .nuksaf-bg-warning {
     @apply bg-yellow-500;
   }
-  .bg-danger {
+  .nuksaf-bg-danger {
     @apply bg-red-500;
   }
 
   /* Hover Colors */
-  .hover-primary {
-    @apply hover:text-[#C2B59B];
+  .nuksaf-hover-primary {
+    @apply transition-colors duration-300 hover:text-[#C2B59B];
   }
-  .hover-secondary {
-    @apply hover:text-[#746C5B];
+  .nuksaf-hover-secondary {
+    @apply transition-colors duration-300 hover:text-[#746C5B];
   }
-  .hover-warning {
-    @apply hover:text-yellow-500;
+  .nuksaf-hover-warning {
+    @apply transition-colors duration-300 hover:text-yellow-500;
   }
-  .hover-danger {
-    @apply hover:text-red-500;
+  .nuksaf-hover-danger {
+    @apply transition-colors duration-300 hover:text-red-500;
   }
 
   /* Typography */
